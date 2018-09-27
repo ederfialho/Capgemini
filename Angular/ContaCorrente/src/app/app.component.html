@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="jumbotron" style="text-align:center">
+      <h1>Desafio Capgemini : Conta Corrente</h1>
+    </div>
+</div>
+<div class="container">
+
+  <div class="form-group">
+    <label>Buscar Conta Corrente</label>
+    <input type="number" class="form-control" #conta [(ngModel)]="nome" placeholder="Deixe o campo vazio para buscar todas as contas cadastradas">
+  </div>
+
+  <button type="button" class="btn btn-primary btn-lg"
+    (click)="consultarContaCorrente(conta.value)" >Pesquisar</button>
+
+  <table class="table" style="margin-top: 20px">
+    <thead>
+      <tr>
+        <th>Conta Corrente</th>
+        <th>Nome</th>
+        <th>Saldo</th>
+        <th>Valor de Operação</th>
+        <th>Operação</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let cc of contacorrente" >
+      <tr>
+        <td>{{ cc.idConta }}</td>
+        <td>{{ cc.pessoa }}</td>
+        <td>{{ cc.saldoConta }}</td>
+        <td><input type="number" class="form-control" #valor value="0"></td>
+        <td>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-danger custom"
+              (click)="deposito(cc.idConta,valor.value,cc)"
+              >Depósito</button>&nbsp;
+              <button class="btn btn-success custom"
+              (click)="saque(cc.idConta,valor.value,cc)"
+              >Saque</button>
+            </span>
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>

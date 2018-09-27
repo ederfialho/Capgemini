@@ -1,0 +1,11 @@
+<form class ="jumbotron"> 
+  <div class="form-group">
+    <label for="pesquisarContaCorrente">Consultar</label>
+
+    <input type="text" class="form-control" 
+    placeholder="Digite o número da Conta Corrente" [(ngModel)]="numeroContaCorrente"
+    [ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="pesquisar()"
+  [disabled]="numeroContaCorrente.length === 0">Pequisar</button>
+</form>
